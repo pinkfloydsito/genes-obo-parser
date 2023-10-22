@@ -5,6 +5,9 @@ def parse_obo_file(file_path) -> list[dict]:
     term_data = []
 
     for node_id, data in graph.nodes(data=True):
+        if data == {}:
+            continue
+
         term_data.append({
             'id': node_id,
             'name': data.get('name', ''),

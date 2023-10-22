@@ -2,6 +2,7 @@ from behave import given, when, then
 from src.database import get_session
 from src.repositories.obo_term_repository import OBOTermRepository
 from src.obo_parser import parse_obo_file
+from src.models import OBOTerm
 
 @given("I have an OBO file")
 def step_given_obo_file(context):
@@ -20,10 +21,16 @@ def step_when_parse_file(context):
 
 @then("I should be able to store its data in the database")
 def step_then_store_in_database(context):
-
+    db = context.db
     try:
         context.repository.store_obo_terms(context.parsed_data)
-        context.db.commit()
+        db.commit()
+
+        inserted_count = db.query(OBOTerm).count()
+        expected_count = 5
+
+        assert inserted_count == expected_count, f"Expected {expected_count} terms, but found {inserted_count} terms in the database."
+
     except Exception as e:
         context.db.rollback()
         raise e
