@@ -33,5 +33,6 @@ class OBOTermRepository:
                 parents = str_parents,
                 is_root = is_root,
             )
+
             self.db.add(term)
         self.db.commit()
