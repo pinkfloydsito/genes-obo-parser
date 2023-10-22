@@ -25,6 +25,6 @@ clean_test_db:
 	TEST=1 $(PYTHON) -c 'from $(MODELS_FILE) import Base, engine; Base.metadata.drop_all(bind=engine)'
 
 test: clean_test_db create_test_db 
-	TEST=1 behave
+	TEST=1 behave --no-capture
 
 .PHONY: all run create_db clean_db test

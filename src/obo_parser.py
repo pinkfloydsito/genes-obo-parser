@@ -1,10 +1,11 @@
 import obonet
 
 def parse_obo_file(file_path) -> list[dict]:
-    graph = obonet.read_obo(file_path)
+    graph = obonet.read_obo(file_path, ignore_obsolete=False)
     term_data = []
 
     for node_id, data in graph.nodes(data=True):
+
         if data == {}:
             continue
 
@@ -15,6 +16,8 @@ def parse_obo_file(file_path) -> list[dict]:
             'definition': data.get('def', ''),
             'synonym': data.get('synonym', ''),
             'is_a': data.get('is_a', []),
+            'is_obsolete': data.get('is_obsolete', None) == 'true',
+            'consider': data.get('consider', []),
         })
 
     return term_data

@@ -82,3 +82,27 @@ name: low-affinity zinc ion transmembrane transporter activity
 namespace: molecular_function
 def: "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: Zn2+ = Zn2+, probably powered by proton motive force. In low-affinity transport the transporter is able to bind the solute only if it is present at very high concentrations." [GOC:mtg_transport, ISBN:0815340729]
 is_a: GO:0005385 ! zinc ion transmembrane transporter activity
+
+[Term]
+id: GO:0000020
+name: obsolete negative regulation of recombination within rDNA repeats
+namespace: biological_process
+def: "OBSOLETE. Any process that stops, prevents, or reduces the frequency, rate or extent of genetic recombination within the DNA of the genes coding for ribosomal RNA." [GOC:go_curators, ISBN:0198506732]
+comment: This term was made obsolete because it describes a substrate-specific process.
+synonym: "negative regulation of recombination within rDNA repeats" EXACT []
+is_obsolete: true
+consider: GO:0045950
+
+[Term]
+id: GO:0045950
+name: negative regulation of mitotic recombination
+namespace: biological_process
+def: "Any process that inhibits or decreases the rate of DNA recombination during mitosis." [GOC:go_curators, GOC:hjd]
+synonym: "down regulation of mitotic recombination" EXACT []
+synonym: "down-regulation of mitotic recombination" EXACT []
+synonym: "downregulation of mitotic recombination" EXACT []
+synonym: "inhibition of mitotic recombination" NARROW []
+synonym: "negative regulation of recombination within rDNA repeats" NARROW []
+is_a: GO:0000019 ! regulation of mitotic recombination
+is_a: GO:0045910 ! negative regulation of DNA recombination
+relationship: negatively_regulates GO:0006312 ! mitotic recombination

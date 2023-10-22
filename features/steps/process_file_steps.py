@@ -27,7 +27,7 @@ def step_then_store_in_database(context):
         db.commit()
 
         inserted_count = db.query(OBOTerm).count()
-        expected_count = 5
+        expected_count = 8
 
         assert inserted_count == expected_count, f"Expected {expected_count} terms, but found {inserted_count} terms in the database."
 
