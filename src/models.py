@@ -1,8 +1,9 @@
 from sqlalchemy import Column, String
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import declarative_base, Session
-from .database import engine
 
+from .database import get_session
+
+SessionLocal, engine = get_session()
 Base = declarative_base()
 
 class OBOTerm(Base):
