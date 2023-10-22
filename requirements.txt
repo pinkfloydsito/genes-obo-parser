@@ -2,3 +2,4 @@ SQLAlchemy==2.0.22
 psycopg2-binary==2.9.9
 behave==1.2.6
 obonet==1.0.0
+python-decouple==3.8
