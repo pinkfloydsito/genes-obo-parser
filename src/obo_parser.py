@@ -5,7 +5,6 @@ def parse_obo_file(file_path) -> list[dict]:
     term_data = []
 
     for node_id, data in graph.nodes(data=True):
-
         if data == {}:
             continue
 
@@ -16,6 +15,7 @@ def parse_obo_file(file_path) -> list[dict]:
             'definition': data.get('def', ''),
             'synonym': data.get('synonym', ''),
             'is_a': data.get('is_a', []),
+            'alt_id': data.get('alt_id', []),
             'is_obsolete': data.get('is_obsolete', None) == 'true',
             'consider': data.get('consider', []),
         })
