@@ -5,11 +5,24 @@ MAIN_FILE := main.py
 DB_NAME := obo_genes_dev
 TEST_DB_NAME := obo_genes_test
 OBO_FILE_PATH := './files/go-basic.obo' 
+CSV_FILE_PATH := './files/data.csv' 
+CSV_OUTPUT_FILE_PATH := './files/data-result.csv' 
+CSV_COUNT_FILE_PATH := './files/data-count-result.csv' 
+
+CSV_SAMPLE_FILE_PATH := './files/data-sample.csv' 
+CSV_SAMPLE_OUTPUT_FILE_PATH := './files/data-sample-result.csv' 
+CSV_SAMPLE_COUNT_FILE_PATH := './files/data-sample-count-result.csv' 
 
 all: run
 
 run: create_db
-	DEVELOPMENT=1  DEVELOPMENT=1 $(PYTHON) -m src.main $(OBO_FILE_PATH)
+	DEVELOPMENT=1 $(PYTHON) -m src.main $(OBO_FILE_PATH)
+
+parse_csv:
+	DEVELOPMENT=1 $(PYTHON) -m src.read_csv_and_process_terms $(CSV_FILE_PATH) $(CSV_OUTPUT_FILE_PATH) $(CSV_COUNT_FILE_PATH)
+
+parse_sample_csv:
+	DEVELOPMENT=1 $(PYTHON) -m src.read_csv_and_process_terms $(CSV_SAMPLE_FILE_PATH) $(CSV_SAMPLE_OUTPUT_FILE_PATH) $(CSV_SAMPLE_COUNT_FILE_PATH)
 
 create_db:
 	- createdb $(DB_NAME)
