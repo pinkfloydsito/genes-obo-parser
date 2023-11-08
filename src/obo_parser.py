@@ -17,6 +17,7 @@ def parse_obo_file(file_path) -> list[dict]:
             'is_a': data.get('is_a', []),
             'alt_id': data.get('alt_id', []),
             'is_obsolete': data.get('is_obsolete', None) == 'true',
+            'replaced_by': data.get('replaced_by', []),
             'consider': data.get('consider', []),
         })
 

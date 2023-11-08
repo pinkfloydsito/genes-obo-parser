@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, ForeignKey, Boolean
+from sqlalchemy import Column, String, ForeignKey, Boolean, Integer, Sequence
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -19,5 +19,11 @@ class OBOTerm(Base):
     is_obsolete = Column(Boolean)
     is_root = Column(Boolean)
 
+class OBOTermMap(Base):
+    __tablename__ = 'obo_term_map'
+
+    id = Column(Integer, Sequence('obo_term_map_id'), primary_key=True)
+    from_term = Column(String)
+    to_term = Column(String)
 
 Base.metadata.create_all(bind=engine)
